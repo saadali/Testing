@@ -1,12 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-<TextView  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
-</LinearLayout>
+<AbsoluteLayout
+android:id="@+id/widget49"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<TextView
+android:id="@+id/user"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Username"
+android:layout_x="48px"
+android:layout_y="146px"
+>
+</TextView>
+<EditText
+android:layout_width="226px"
+android:layout_height="50px"
+android:textSize="18sp"
+android:layout_x="46px"
+android:layout_y="166px"
+android:id="@+id/txtUserID">
+</EditText>
+<TextView
+android:id="@+id/pass"
+android:layout_width="wrap_content"
+android:layout_height="19px"
+android:text="Password"
+android:layout_x="49px"
+android:layout_y="250px"
+>
+</TextView>
+<EditText
+android:layout_width="226px"
+android:layout_height="50px"
+android:textSize="18sp"
+android:password="true"
+android:layout_x="48px"
+android:layout_y="270px"
+android:id="@+id/txtPass">
+</EditText>
+<Button
+android:id="@+id/login"
+android:layout_width="120px"
+android:layout_height="50px"
+android:text="Sign in"
+android:layout_x="154px"
+android:layout_y="322px"
+>
+</Button>
+<TextView
+android:id="@+id/no_nebula"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Don't have a Nebula Name?"
+android:layout_x="49px"
+android:layout_y="209px"
+android:clickable="true">
+</TextView>
+<ImageView
+android:id="@+id/widget51"
+android:layout_width="226px"
+android:layout_height="73px"
+android:src="@drawable/nebula"
+android:layout_y="55px"
+android:visibility="visible" android:layout_x="46px">
+</ImageView>
+
+</AbsoluteLayout>

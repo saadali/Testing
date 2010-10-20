@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/contact"
+    android:title="Add Contact"
+        android:icon="@drawable/contact" />
+    <item android:id="@+id/group"
+        android:title="Add Group" 
+        android:icon="@drawable/group" />
+         <item android:id="@+id/signout"
+        android:title="Signout" 
+        android:icon="@drawable/icon" />
+   
+</menu>

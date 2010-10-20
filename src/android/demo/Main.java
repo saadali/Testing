@@ -1,72 +1,70 @@
 package android.demo;
 
-import android.app.Activity;
+
+
+import android.app.TabActivity;
 import android.content.Intent;
-import android.demo.R;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Button;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.TabHost;
+import android.widget.Toast;
 
+public class Main extends TabActivity {
+	public void onCreate(Bundle savedInstanceState) {
+	    super.onCreate(savedInstanceState);
+	    setContentView(R.layout.tabs);
 
+	    Resources res = getResources(); // Resource object to get Drawables
+	    TabHost tabHost = getTabHost();  // The activity TabHost
+	    TabHost.TabSpec spec;  // Resusable TabSpec for each tab
+	    Intent intent;  // Reusable Intent for each tab
 
-public class Main extends Activity implements OnItemSelectedListener
-{
-	//public static final String Key_Full_Name = "f_name";
-    //DBClass _DB=new DBClass(this);
-    
-    public void onCreate(Bundle savedInstanceState)
-	{
-		try
-		{				
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.contents);
-		Button signout = (Button) this.findViewById(R.id.signout);
-		TextView txtcalc=(TextView)this.findViewById(R.id.txtcalc);
-		
-		if (signout.isClickable()) {
+	    // Create an Intent to launch an Activity for the tab (to be reused)
+	    intent = new Intent().setClass(this, Contacts.class);
 
-			signout.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					Intent intent = new Intent();
-					setResult(RESULT_OK, intent);
-					finish();
+	    // Initialize a TabSpec for each tab and add it to the TabHost
+	    spec = tabHost.newTabSpec("contacts").setIndicator("Contacts",
+	                      res.getDrawable(R.drawable.ic_tab_albums))
+	                  .setContent(intent);
+	    tabHost.addTab(spec);
 
-				}
-			});
-		}
-		//if (txtcalc.isClickable()) {
+	    // Do the same for the other tabs
+	    intent = new Intent().setClass(this, Conversation.class);
+	    spec = tabHost.newTabSpec("conversation").setIndicator("Conversation",
+	                      res.getDrawable(R.drawable.ic_tab_artists))
+	                  .setContent(intent);
+	    tabHost.addTab(spec);
 
-			txtcalc.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View view) {
-					//setContentView(R.layout.calculator);
-					Intent intent = new Intent(Main.this,Calculator.class);
-			        startActivity(intent);
-					
+	    intent = new Intent().setClass(this, Settings.class);
+	    spec = tabHost.newTabSpec("settings").setIndicator("Settings",
+	                      res.getDrawable(R.drawable.ic_tab_songs))
+	                  .setContent(intent);
+	    tabHost.addTab(spec);
+	    
 
-				}
-			});
-		
-		
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+	    tabHost.setCurrentTab(0);
 	}
-
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3) {
-		// Toast.makeText(getApplicationContext(), "hello", Toast.LENGTH_LONG).show();
-		
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.menu, menu);
+	    return true;
 	}
 
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+		@Override
+		public boolean onOptionsItemSelected(MenuItem item) {
+		    switch (item.getItemId()) {
+		        case R.id.contact:     Toast.makeText(this, "You pressed contact!", Toast.LENGTH_LONG).show();
+		                            break;
+		        case R.id.group:     Toast.makeText(this, "You pressed group!", Toast.LENGTH_LONG).show();
+		                            break;
+		        case R.id.signout:     Toast.makeText(this, "You pressed signout!", Toast.LENGTH_LONG).show();
+                break;
+		    }
+		    return true;
+		}
 	
 }

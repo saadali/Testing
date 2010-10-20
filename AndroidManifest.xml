@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="android.demo"
       android:versionCode="1"
-      android:versionName="1.0" package="android.demo">
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
+      android:versionName="1.0">
+       <application android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:name=".nebula"
                   android:label="@string/app_name">
-            <intent-filter>
+                  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>  
+        <activity android:name=".Main"
+                  android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+                  <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Account"/>
+            <activity android:name=".Contacts"
+                  android:label="@string/app_name">
+                  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+                  
+                   <activity android:name=".Conversation"
+                  android:label="@string/app_name">
+                  <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+                   <activity android:name=".Settings"
+                  android:label="@string/app_name"><intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+           
+<activity android:name=".Account"/>
         <activity android:name=".Main"/>
         <activity android:name=".contents"/>
         <activity android:name=".Calculator"/>
         <activity android:name=".calculator"/>
-
-
+<activity android:name=".Contacts"/>
+<activity android:name=".Conversation"/>
+<activity android:name=".Settings"/>
+<activity android:name=".Signout"/>
+<activity android:name=".menu"/>
     </application>
     <uses-sdk android:minSdkVersion="7" />
-<uses-permission
-  android:name="android.permission.READ_CALENDAR">
-  </uses-permission>
-<uses-permission
-   android:name="android.permission.WRITE_CALENDAR">
-   </uses-permission>
+
 </manifest> 

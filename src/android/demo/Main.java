@@ -57,12 +57,23 @@ public class Main extends TabActivity {
 		@Override
 		public boolean onOptionsItemSelected(MenuItem item) {
 		    switch (item.getItemId()) {
-		        case R.id.contact:     Toast.makeText(this, "You pressed contact!", Toast.LENGTH_LONG).show();
-		                            break;
-		        case R.id.group:     Toast.makeText(this, "You pressed group!", Toast.LENGTH_LONG).show();
-		                            break;
-		        case R.id.signout:     Toast.makeText(this, "You pressed signout!", Toast.LENGTH_LONG).show();
-                break;
+		        case R.id.contact:     
+		        {                            
+		                 			          				
+		          Intent intent = new Intent(Main.this, Addcontacts.class);
+		          startActivity(intent);
+		          }break;
+		         		                          
+		        case R.id.group: 
+		        	{Intent intent = new Intent(Main.this, Addgroup.class);
+			          startActivity(intent);
+			          }break;
+		                            
+		                            
+		        case R.id.signout:     
+		        {Intent intent = new Intent(Main.this, nebula.class);
+		        startActivity(intent);
+		        }break;
 		    }
 		    return true;
 		}

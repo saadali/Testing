@@ -39,7 +39,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-           
+        <activity android:name=".Addcontacts"
+                  android:label="@string/app_name"><intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity android:name=".Addgroup"
+                  android:label="@string/app_name"><intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         <activity android:name=".ExpList"
+                  android:label="@string/app_name"><intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Contactexpandable"
+                  android:label="@string/app_name"><intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+         
 <activity android:name=".Account"/>
         <activity android:name=".Main"/>
         <activity android:name=".contents"/>
@@ -50,6 +74,8 @@
 <activity android:name=".Settings"/>
 <activity android:name=".Signout"/>
 <activity android:name=".menu"/>
+<activity android:name=".add_contact"/>
+<activity android:name=".listview"/>
     </application>
     <uses-sdk android:minSdkVersion="7" />
 

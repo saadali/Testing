@@ -7,6 +7,6 @@
         android:icon="@drawable/group" />
          <item android:id="@+id/signout"
         android:title="Signout" 
-        android:icon="@drawable/icon" />
+        android:icon="@drawable/close_icon" />
    
 </menu>

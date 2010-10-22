@@ -15,17 +15,28 @@ public class DBClass
 	public static final String Key_Full_Name = "f_name";
 	public static final String Key_email = "email";
 	public static final String Key_pass = "pass";
+	public static final String KEY_ROWID1 = "_ID1";
+	public static final String Key_user = "user";
+	public static final String Key_grp = "grp";
+	
 
-	private static final String DATABASE_NAME = "AddressBook12";
+	private static final String DATABASE_NAME = "Neb";
 	private static final String DATABASE_TABLE = "Contact12";
+	private static final String DATABASE_TABLE1 = "NebulaContact";
 	private static final int DATABASE_VERSION = 1;
 
-	private static final String DATABASE_CREATE = "create table Contact12 (n_username text, "
+	
+		
+		private static final String DATABASE_CREATE = "create table Contact12 (n_username text, "
 		    +"_id integer primary key autoincrement,"
 		    + "email text not null, "
 			+ "pass text not null, "
 			+ "f_name text not null);";
-
+			
+			 private static final String DATABASE_CREATE1 ="create table NebulaContact (user text, " 
+		+"_ID1 integer primary key autoincrement,"
+		+"grp text not null);";
+	
 	private final Context context;
 
 	private DatabaseHelper DBHelper;
@@ -49,15 +60,19 @@ public class DBClass
 		@Override
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL(DATABASE_CREATE);
+			db.execSQL(DATABASE_CREATE1);
+			
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
 					+ newVersion + ", which will destroy all old data");
-			db.execSQL("DROP TABLE IF EXISTS Contact12");
+			db.execSQL("DROP TABLE IF EXISTS Contact12,NebulaContact");
 			onCreate(db);
 		}
+		
+		
 	}
 
 	// ---opens the database---
@@ -89,13 +104,41 @@ public class DBClass
 		long _long=db.insert(DATABASE_TABLE, null, initialValues);
 		return _long;
 	}
-
+	public long insertTitle1(String user, String grp) {
+		ContentValues initialValues1 = new ContentValues();
+		initialValues1.put(Key_user, user);
+		initialValues1.put(Key_grp, grp);
+	
+		// initialValues.put(Key_confirm_password, C_pwd);
+		long _long=db.insert(DATABASE_TABLE1, null, initialValues1);
+		return _long;
+	}
+	
 	public Cursor getAllTitles() {
 		return db.query(DATABASE_TABLE, new String[] {KEY_ROWID,Key_User_Name,
 				Key_Full_Name, Key_email, Key_pass }, null, null, null, null,
 				null);
 	}
+	public Cursor getAllTitles1() {
+		return db.query(DATABASE_TABLE1, new String[] {KEY_ROWID1,Key_user,
+				Key_grp}, null, null, null, null, null);
+	}
 
+	public Cursor getTitle1(String user) throws SQLException {
+		try {
+			Cursor mCursor =
+
+			db.query(true, DATABASE_TABLE1, new String[] { Key_user, },
+					"user ='" + user.toString() +"'",
+					null, null, null, null, null);
+			
+			return mCursor;
+		} catch (Exception e) {
+			e.printStackTrace(); 
+			return null;
+		}
+
+	}
 	public Cursor getTitle(String n_username) throws SQLException {
 		try {
 			Cursor mCursor =
@@ -129,7 +172,22 @@ public class DBClass
 
 	}
 	
-	
+	public Cursor getAuthentication1(String user) throws SQLException 
+	{
+		try {
+			Cursor mCursor =db.query(true, DATABASE_TABLE1, new String[] { Key_user, },
+					"user ='"+ user.toString() +"'" ,
+					null, null, null, null,
+					null);
+			
+
+			return mCursor;
+		} catch (Exception e) {
+			e.printStackTrace(); 
+			return null;
+		}
+
+	}
 	
   //---updates a title---
   public boolean updateTitle(String n_username, String f_name, 
@@ -142,7 +200,16 @@ public class DBClass
       return db.update(DATABASE_TABLE, args, 
     		  Key_User_Name + "=" + n_username, null) > 0;
   }
-	
+  public boolean updateTitle1(String user, String grp) 
+		  {
+		      ContentValues args = new ContentValues();
+		      args.put(Key_user, user);
+		      args.put(Key_grp, grp);
+		      
+		      return db.update(DATABASE_TABLE1, args, 
+		    		  Key_user + "=" + user, null) > 0;
+		  }
+
 	
 
 	

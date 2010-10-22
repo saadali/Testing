@@ -52,7 +52,7 @@ public class nebula extends Activity {
 		        }
 				else
 				{
-					Toast.makeText(getApplicationContext(), "No user", Toast.LENGTH_LONG).show();
+					Toast.makeText(getApplicationContext(), "Invalid Username or Password", Toast.LENGTH_LONG).show();
 				}
 				
 			}
